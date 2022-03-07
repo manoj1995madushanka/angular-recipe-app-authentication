@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
 
+    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
     <div *ngIf="isLoading" style="text-align: center">
       <app-loading-spinner></app-loading-spinner>
     </div>
@@ -18,8 +20,10 @@
       </div>
 
       <div>
-        <button class="btn btn-primary" (invalid)="!authForm.valid">{{isLoginMode? 'Login' : 'Sign Up'}}</button> |
-        <button class="btn btn-primary" (click)="onSwitchMode()">Switch to {{isLoginMode? 'Sign Up': 'Login'}}</button>
+        <button class="btn btn-primary" (invalid)="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
+        |
+        <button class="btn btn-primary" (click)="onSwitchMode()">Switch
+          to {{isLoginMode ? 'Sign Up' : 'Login'}}</button>
       </div>
 
     </form>
