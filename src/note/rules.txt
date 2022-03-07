@@ -9,4 +9,4 @@ for change firebase access only to authorized userd change rule as below
 
 auth api documentation : https://firebase.google.com/docs/reference/rest/auth
 
-
+for get free css loading spinners : https://loading.io/css/
