@@ -6,3 +6,7 @@ for change firebase access only to authorized userd change rule as below
     ".write": "auth!=null",
   }
 }
+
+auth api documentation : https://firebase.google.com/docs/reference/rest/auth
+
+
