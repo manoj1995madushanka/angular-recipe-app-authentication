@@ -1,0 +1,8 @@
+for change firebase access only to authorized userd change rule as below
+
+{
+  "rules": {
+    ".read": "auth!=null",
+    ".write": "auth!=null",
+  }
+}
