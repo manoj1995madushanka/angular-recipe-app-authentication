@@ -11,7 +11,7 @@ import {AuthComponent} from '../auth/auth.component';
 
 const appRoutes: Routes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecipesComponent,
     children: [
       { path: '', component: RecipeStartComponent },
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forChild(appRoutes)],
   exports: [RouterModule]
 })
 export class RecipeRoutingModule { }
