@@ -24,16 +24,13 @@ import {AlertComponent} from './shared/alert/alert.component';
 import {PlaceholderDirective} from './shared/placeholder/placeholder.directive';
 import {RecipeModule} from './recipes/recipe.module';
 import {ShoppingListModule} from './shopping-list/shopping-list.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceholderDirective
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -42,14 +39,12 @@ import {ShoppingListModule} from './shopping-list/shopping-list.module';
     HttpClientModule,
     AppRoutingModule,
     RecipeModule,
-    ShoppingListModule
+    ShoppingListModule,
+    SharedModule
   ],
   providers: [ShoppingListService, RecipeService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
-  bootstrap: [AppComponent],
-  /*this entry component needs to add when we are using components without selector
-  * this component used in auth component*/
-  entryComponents: [AlertComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

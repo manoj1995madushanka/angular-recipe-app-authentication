@@ -1,0 +1,31 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
+import {AlertComponent} from './alert/alert.component';
+import {PlaceholderDirective} from './placeholder/placeholder.directive';
+import {DropdownDirective} from './dropdown.directive';
+
+
+@NgModule({
+  declarations: [
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective,
+    DropdownDirective
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective,
+    DropdownDirective,
+    CommonModule
+  ],
+  /*this entry component needs to add when we are using components without selector
+  * this component used in auth component*/
+  entryComponents: [AlertComponent]
+})
+export class SharedModule {
+}
