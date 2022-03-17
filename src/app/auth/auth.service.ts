@@ -4,6 +4,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {BehaviorSubject, Subject, throwError} from 'rxjs';
 import {UserModel} from './user.model';
 import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 export interface AuthResponseData {
   idToken: string,
@@ -24,13 +25,14 @@ export class AuthService {
   // it will take start value as parameter (here we passed null)
   user = new BehaviorSubject<UserModel>(null);
   private tokenExpirationTimer: any;
-  token:string = null;
+  token: string = null;
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
   signup(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAu9GPEe7TPc_LroSCaX2vEdIqu01feToI'
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
+      + environment.firebaseAPIKey
       , {
         email,
         password,
@@ -47,18 +49,19 @@ export class AuthService {
           );
         })
       );
-      /*.pipe(catchError(
-          this.handleError
-        ),
-        tap(responseData => {
-          // firebase returns expire data bu seconds
-          this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn)
-        })
-      );*/
+    /*.pipe(catchError(
+        this.handleError
+      ),
+      tap(responseData => {
+        // firebase returns expire data bu seconds
+        this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn)
+      })
+    );*/
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAu9GPEe7TPc_LroSCaX2vEdIqu01feToI'
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='
+      + environment.firebaseAPIKey
       , {
         email,
         password,
@@ -75,14 +78,14 @@ export class AuthService {
           );
         })
       );
-      /*.pipe(catchError(
-          this.handleError
-        ),
-        tap(responseData => {
-          // firebase returns expire data bu seconds
-          this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn)
-        })
-      );*/
+    /*.pipe(catchError(
+        this.handleError
+      ),
+      tap(responseData => {
+        // firebase returns expire data bu seconds
+        this.handleAuthentication(responseData.email, responseData.localId, responseData.idToken, +responseData.expiresIn)
+      })
+    );*/
   }
 
   autoLogin() {
